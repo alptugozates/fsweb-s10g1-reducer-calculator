@@ -4,13 +4,16 @@ import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 import { initialState } from './reducers';
 import reducer from './reducers';
-import { addOne, applyNumber } from './actions';
+import { CHANGE_OPERATION, addOne, applyNumber } from './actions';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  handleSonuc = () => {
+  const handleSonuc = (e) => {
     dispatch(applyNumber((Number(e.target.value))));
+  }
+  const handleIslem = (e) => {
+    dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
   }
 
   return (
@@ -36,27 +39,27 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} />
-              <CalcButton value={2} />
-              <CalcButton value={3} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={1} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={2} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={3} />
             </div>
 
             <div className="row">
-              <CalcButton value={4} />
-              <CalcButton value={5} />
-              <CalcButton value={6} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={4} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={5} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={6} />
             </div>
 
             <div className="row">
-              <CalcButton value={7} />
-              <CalcButton value={8} />
-              <CalcButton value={9} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={7} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={8} />
+              <CalcButton onClick={(e) => handleSonuc(e)} value={9} />
             </div>
 
             <div className="row">
-              <CalcButton value={"+"} />
-              <CalcButton value={"*"} />
-              <CalcButton value={"-"} />
+              <CalcButton onClick={(e) => handleIslem} value={"+"} />
+              <CalcButton onClick={(e) => handleIslem} value={"*"} />
+              <CalcButton onClick={(e) => handleIslem} value={"-"} />
             </div>
 
             <div className="row ce_button">
