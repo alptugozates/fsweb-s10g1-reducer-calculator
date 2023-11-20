@@ -4,7 +4,7 @@ import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 import { initialState } from './reducers';
 import reducer from './reducers';
-import { CHANGE_OPERATION, addOne, applyNumber } from './actions';
+import { changeOperation, addOne, applyNumber } from './actions';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -15,10 +15,6 @@ function App() {
     dispatch(applyNumber(number));
   }
   console.log("apply:", applyNumber)
-
-  const handleIslem = (e) => {
-    dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
-  }
 
   return (
     <div className="App">
