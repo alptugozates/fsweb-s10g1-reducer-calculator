@@ -9,9 +9,13 @@ import { CHANGE_OPERATION, addOne, applyNumber } from './actions';
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleSonuc = (e) => {
-    dispatch(applyNumber((Number(e.target.value))));
+
+
+  const handleApplyNumber = (number) => {
+    dispatch(applyNumber(number));
   }
+  console.log("apply:", applyNumber)
+
   const handleIslem = (e) => {
     dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
   }
@@ -26,7 +30,7 @@ function App() {
         <div className="col-md-12 d-flex justify-content-center">
           <form name="Cal">
 
-            <TotalDisplay value={0} />
+            <TotalDisplay value={state.total} />
             <div className="row details">
               <span id="operation"><b>Operation:</b> X</span>
               <span id="memory"><b>Memory:</b> 0</span>
@@ -39,21 +43,21 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton onClick={(e) => handleSonuc(e)} value={1} />
-              <CalcButton onClick={(e) => handleSonuc(e)} value={2} />
-              <CalcButton onClick={(e) => handleSonuc(e)} value={3} />
+              <CalcButton onClick={() => handleApplyNumber(1)} value={1} />
+              <CalcButton onClick={() => handleApplyNumber(2)} value={2} />
+              <CalcButton onClick={() => handleApplyNumber(3)} value={3} />
             </div>
 
             <div className="row">
-              <CalcButton onClick={(e) => handleSonuc(e)} value={4} />
-              <CalcButton onClick={(e) => handleSonuc(e)} value={5} />
-              <CalcButton onClick={(e) => handleSonuc(e)} value={6} />
+              <CalcButton onClick={() => handleApplyNumber(4)} value={4} />
+              <CalcButton onClick={() => handleApplyNumber(5)} value={5} />
+              <CalcButton onClick={() => handleApplyNumber(6)} value={6} />
             </div>
 
             <div className="row">
-              <CalcButton onClick={(e) => handleSonuc(e)} value={7} />
-              <CalcButton onClick={(e) => handleSonuc(e)} value={8} />
-              <CalcButton onClick={(e) => handleSonuc(e)} value={9} />
+              <CalcButton onClick={() => handleApplyNumber(7)} value={7} />
+              <CalcButton onClick={() => handleApplyNumber(8)} value={8} />
+              <CalcButton onClick={() => handleApplyNumber(9)} value={9} />
             </div>
 
             <div className="row">
