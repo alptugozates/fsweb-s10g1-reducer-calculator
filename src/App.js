@@ -10,13 +10,11 @@ import {
   CLEAR_DISPLAY,
   MEMORY_ADD,
   CURRENT_MEMORY,
-  RESET_MEMORY
+  RESET_MEMORY,
 } from './actions';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-
 
   const handleApplyNumber = (number) => {
     dispatch(applyNumber(number));
@@ -26,6 +24,20 @@ function App() {
   const handleOperationChanger = (operator) => {
     dispatch(changeOperation(operator));
   }
+
+  const handleClearDisplay = () => {
+    dispatch({ type: CLEAR_DISPLAY });
+  }
+  const handleMemoryAddition = () => {
+    dispatch({ type: MEMORY_ADD });
+  }
+  const handleCurrentMemory = () => {
+    dispatch({ type: CURRENT_MEMORY });
+  }
+  const resetMemoryHandler = () => {
+    dispatch({ type: RESET_MEMORY });
+  }
+
 
   return (
     <div className="App">
@@ -44,9 +56,9 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton onClick={() => dispatch({ type: MEMORY_ADD })} value={"M+"} />
-              <CalcButton onClick={() => dispatch({ type: CURRENT_MEMORY })} value={"MR"} />
-              <CalcButton onClick={() => dispatch({ type: RESET_MEMORY })} value={"MC"} />
+              <CalcButton onClick={handleMemoryAddition} value={"M+"} />
+              <CalcButton onClick={handleCurrentMemory} value={"MR"} />
+              <CalcButton onClick={resetMemoryHandler} value={"MC"} />
             </div>
 
             <div className="row">
@@ -74,7 +86,7 @@ function App() {
             </div>
 
             <div className="row ce_button">
-              <CalcButton onClick={() => dispatch({ type: CLEAR_DISPLAY })} value={"CE"} />
+              <CalcButton onClick={handleClearDisplay} value={"CE"} />
             </div>
 
           </form>
