@@ -4,8 +4,15 @@ import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 import { initialState } from './reducers';
 import reducer from './reducers';
+import { addOne, applyNumber } from './actions';
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  handleSonuc = () => {
+    dispatch(applyNumber((Number(e.target.value))));
+  }
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
